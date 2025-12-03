@@ -3,7 +3,7 @@ services:
     name: solar-dashboard
     env: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn solar_dashboard:app.server --timeout 120
+    startCommand: gunicorn --workers 1 --threads 4 --timeout 120 solar_dashboard:server
     envVars:
       - key: PYTHON_VERSION
-        value: 3.9.16
+        value: 3.11.0
